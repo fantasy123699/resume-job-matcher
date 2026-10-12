@@ -1,0 +1,71 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  web:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+        with:
+          version: 11.19.0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm check:web
+
+  backend:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17-alpine
+        env:
+          POSTGRES_DB: resume_job_matcher_test
+          POSTGRES_USER: resume_job_matcher
+          POSTGRES_PASSWORD: test-password
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U resume_job_matcher -d resume_job_matcher_test"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      DATABASE_URL: postgresql+psycopg://resume_job_matcher:test-password@localhost:5432/resume_job_matcher_test
+      TEST_DATABASE_URL: postgresql+psycopg://resume_job_matcher:test-password@localhost:5432/resume_job_matcher_test
+      SESSION_SECRET: ci-session-secret-that-is-at-least-thirty-two-characters
+      WEB_ORIGIN: http://localhost:3000
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v5
+        with:
+          version: 0.12.5
+          enable-cache: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.13"
+      - run: uv --directory backend sync --all-groups --frozen
+      - run: uv --directory backend run ruff check .
+      - run: uv --directory backend run ruff format --check .
+      - run: uv --directory backend run mypy src ../apps/api ../apps/worker
+      - run: uv --directory backend run alembic upgrade head
+      - run: uv --directory backend run pytest
+
+  secrets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: trufflesecurity/trufflehog@main
+        with:
+          path: ./
+          base: HEAD~1
+          head: HEAD

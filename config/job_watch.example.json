@@ -1,0 +1,335 @@
+{
+  "include_keywords": [
+    "后端",
+    "服务端",
+    "python",
+    "java",
+    "golang",
+    "go开发",
+    "fastapi",
+    "spring",
+    "分布式",
+    "数据库",
+    "软件开发",
+    "软件研发",
+    "研发工程师",
+    "开发工程师",
+    "c++",
+    "云计算",
+    "中间件",
+    "基础架构",
+    "大数据",
+    "数据开发",
+    "数据工程师",
+    "全栈",
+    "嵌入式软件",
+    "算法",
+    "机器学习",
+    "深度学习",
+    "人工智能",
+    "linux",
+    "微服务",
+    "存储"
+  ],
+  "campus_keywords": [
+    "2027届",
+    "2027校园招聘",
+    "2027",
+    "校园招聘",
+    "校招",
+    "秋招",
+    "秋季招聘",
+    "提前批",
+    "应届生",
+    "应届"
+  ],
+  "exclude_keywords": [
+    "社会招聘",
+    "社招"
+  ],
+  "min_score": 3,
+  "history_start_date": "2026-08-01",
+  "max_age_days": 60,
+  "report_dir": "data/job_watch",
+  "sources": [
+    {
+      "id": "sasac_recruitment",
+      "name": "国务院国资委招聘栏目",
+      "owner": "国务院国有资产监督管理委员会",
+      "source_type": "official_government",
+      "reliability": 5,
+      "campus_scope": false,
+      "listing_urls": [
+        "https://www.sasac.gov.cn/n2588035/n2588325/n2588350/index.html"
+      ],
+      "allowed_hosts": [
+        "www.sasac.gov.cn"
+      ],
+      "link_selector": "a[href]",
+      "link_url_pattern": "/n2588035/n2588325/n2588350/|/c[0-9]+/content\\.html",
+      "detail_content_selector": "body",
+      "max_detail_pages": 40,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://www.sasac.gov.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控公开招聘公告并保留原始链接；当前 HTTPS/robots 连通性复核未通过，暂时停用。",
+      "reviewed_at": "2026-08-26",
+      "enabled": false
+    },
+    {
+      "id": "nankai_career",
+      "name": "南开大学学生就业指导中心",
+      "owner": "南开大学学生就业指导中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://career.nankai.edu.cn/correcruit/index.html"
+      ],
+      "pagination_url_template": "https://career.nankai.edu.cn/correcruit/index/p/{page}.html",
+      "max_listing_pages": 50,
+      "allowed_hosts": [
+        "career.nankai.edu.cn"
+      ],
+      "item_selector": ".content > ul > li",
+      "link_selector": ".title1 a[href]",
+      "link_url_pattern": "/correcruit/content/id/[0-9]+\\.html",
+      "listing_date_selector": ".date",
+      "detail_content_selector": "body",
+      "match_from_listing_only": false,
+      "max_detail_pages": 80,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://career.nankai.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控学校审核展示的公开招聘信息并保留原始链接；不重新发布完整正文，投递前回到企业官网核验。",
+      "reviewed_at": "2026-08-26",
+      "enabled": true
+    },
+    {
+      "id": "hebut_career",
+      "name": "河北工业大学就业指导中心",
+      "owner": "河北工业大学就业指导中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://career.hebut.edu.cn/home/correcruit/index.html"
+      ],
+      "pagination_url_template": "https://career.hebut.edu.cn/home/correcruit/index/p/{page}.html",
+      "max_listing_pages": 50,
+      "allowed_hosts": [
+        "career.hebut.edu.cn"
+      ],
+      "item_selector": ".zw_title",
+      "link_selector": ".lizw[href]",
+      "link_url_pattern": "/home/correcruit/content/id/[0-9]+\\.html",
+      "listing_date_selector": "p",
+      "detail_content_selector": "body",
+      "match_from_listing_only": true,
+      "max_detail_pages": 20,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://career.hebut.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控学校公开就业信息，按标题筛选并保留原始链接；50 页可覆盖 2026 年 8 月初，投递前回到企业官网核验。",
+      "reviewed_at": "2026-08-26",
+      "enabled": true
+    },
+    {
+      "id": "tiangong_career",
+      "name": "天津工业大学学生就业指导中心",
+      "owner": "天津工业大学学生就业指导中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://jobs.tiangong.edu.cn/correcruit/index.html"
+      ],
+      "pagination_url_template": "https://jobs.tiangong.edu.cn/correcruit/index/p/{page}.html",
+      "max_listing_pages": 30,
+      "allowed_hosts": [
+        "jobs.tiangong.edu.cn"
+      ],
+      "item_selector": ".content > ul > li",
+      "link_selector": ".title1 a[href]",
+      "link_url_pattern": "/correcruit/content/id/[0-9]+\\.html",
+      "listing_date_selector": ".date",
+      "detail_content_selector": "body",
+      "match_from_listing_only": false,
+      "max_detail_pages": 80,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://jobs.tiangong.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控学校审核展示的公开招聘信息；标题命中直接收录，综合校招简章有限读取正文，投递前回到企业官网核验。",
+      "reviewed_at": "2026-08-26",
+      "enabled": true
+    },
+    {
+      "id": "hust_career",
+      "name": "华中科技大学就业信息网",
+      "owner": "华中科技大学大学生就业指导中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://job.hust.edu.cn/zpinfo1.htm"
+      ],
+      "pagination_url_template": "https://job.hust.edu.cn/zpinfo1_{page}.htm",
+      "max_listing_pages": 20,
+      "allowed_hosts": [
+        "job.hust.edu.cn"
+      ],
+      "item_selector": ".nytzlist > li",
+      "link_selector": "h4 a[href]",
+      "link_url_pattern": "/zpinfo1/[0-9]+\\.htm",
+      "listing_date_selector": "time",
+      "detail_content_selector": "body",
+      "match_from_listing_only": false,
+      "max_detail_pages": 100,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://job.hust.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控学校公开招聘信息与历史分页；标题命中直接收录，综合校招简章有限读取正文，原文和投递入口均保留。",
+      "reviewed_at": "2026-08-26",
+      "enabled": true
+    },
+    {
+      "id": "jlu_career",
+      "name": "吉林大学就业网",
+      "owner": "吉林大学学生就业创业指导与服务中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://jdjyw.jlu.edu.cn/mportal/recruit/list?type=2"
+      ],
+      "allowed_hosts": [
+        "jdjyw.jlu.edu.cn"
+      ],
+      "item_selector": ".m-recruit-content > li",
+      "link_selector": "a[href]",
+      "link_url_pattern": "/mportal/recruit/details\\?id=[a-f0-9]+",
+      "listing_date_selector": "div span:first-child",
+      "detail_content_selector": "body",
+      "match_from_listing_only": false,
+      "max_detail_pages": 50,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://jdjyw.jlu.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控吉林大学官网公开的招聘快讯，不采集需要登录的内容；支持英文月份发布日期并保留原始投递简章。",
+      "reviewed_at": "2026-08-26",
+      "enabled": true
+    },
+    {
+      "id": "xidian_career",
+      "name": "西安电子科技大学就业信息网",
+      "owner": "西安电子科技大学就业指导服务中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://job.xidian.edu.cn/search/list/do1/job.xidian.edu.cn/domain/xidian/keyword/2027"
+      ],
+      "pagination_url_template": "https://job.xidian.edu.cn/search/list/do1/job.xidian.edu.cn/domain/xidian/keyword/2027/page/{page}",
+      "max_listing_pages": 20,
+      "allowed_hosts": [
+        "job.xidian.edu.cn"
+      ],
+      "item_selector": ".pub-list > li",
+      "link_selector": ".css-title a[href]",
+      "link_url_pattern": "/campus/view/id/[0-9]+",
+      "listing_date_selector": ".css-title + p",
+      "detail_content_selector": "body",
+      "match_from_listing_only": false,
+      "max_detail_pages": 100,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://job.xidian.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "使用官网公开的 2027 关键词搜索页面及分页，不调用隐藏接口；综合校招简章有限读取正文并保留原始链接。",
+      "reviewed_at": "2026-08-26",
+      "enabled": true
+    },
+    {
+      "id": "tju_career",
+      "name": "天津大学就业指导中心",
+      "owner": "天津大学就业指导中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://job.tju.edu.cn/"
+      ],
+      "allowed_hosts": [
+        "job.tju.edu.cn"
+      ],
+      "link_selector": "a[href]",
+      "link_url_pattern": "/correcruit/content/id/[0-9]+\\.html",
+      "detail_content_selector": "body",
+      "match_from_listing_only": true,
+      "max_detail_pages": 40,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://job.tju.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控学校公开招聘简章并保留原始链接；不重新发布完整正文，投递前回到企业官网核验。",
+      "reviewed_at": "2026-08-26",
+      "enabled": true
+    },
+    {
+      "id": "tjcu_career",
+      "name": "天津商业大学就业信息网",
+      "owner": "天津商业大学学生就业指导中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://career.tjcu.edu.cn/correcruit/index.html"
+      ],
+      "pagination_url_template": "https://career.tjcu.edu.cn/correcruit/index/p/{page}.html",
+      "max_listing_pages": 20,
+      "allowed_hosts": [
+        "career.tjcu.edu.cn"
+      ],
+      "item_selector": ".zw_title",
+      "link_selector": ".lizw[href]",
+      "link_url_pattern": "/correcruit/content/id/[0-9]+\\.html",
+      "listing_date_selector": "p",
+      "detail_content_selector": "body",
+      "match_from_listing_only": false,
+      "max_detail_pages": 60,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://career.tjcu.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控天津商业大学公开企业招聘信息；标题命中直接收录，综合校招简章有限读取正文，投递前回企业官网核验。",
+      "reviewed_at": "2026-08-27",
+      "enabled": true
+    },
+    {
+      "id": "tust_career",
+      "name": "天津科技大学就业信息网",
+      "owner": "天津科技大学学生就业指导中心",
+      "source_type": "official_university",
+      "reliability": 4,
+      "campus_scope": true,
+      "listing_urls": [
+        "https://jy.tust.edu.cn/correcruit/index.html"
+      ],
+      "pagination_url_template": "https://jy.tust.edu.cn/correcruit/index/p/{page}.html",
+      "max_listing_pages": 20,
+      "allowed_hosts": [
+        "jy.tust.edu.cn"
+      ],
+      "item_selector": ".zw_title",
+      "link_selector": ".lizw[href]",
+      "link_url_pattern": "/correcruit/content/id/[0-9]+\\.html",
+      "listing_date_selector": "p",
+      "detail_content_selector": "body",
+      "match_from_listing_only": false,
+      "max_detail_pages": 60,
+      "request_interval_seconds": 2.0,
+      "robots_url": "https://jy.tust.edu.cn/robots.txt",
+      "terms_url": null,
+      "usage_note": "仅监控天津科技大学公开企业招聘信息；标题命中直接收录，综合校招简章有限读取正文，投递前回企业官网核验。",
+      "reviewed_at": "2026-08-27",
+      "enabled": true
+    }
+  ]
+}

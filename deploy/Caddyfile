@@ -1,0 +1,15 @@
+{$APP_DOMAIN} {
+  encode zstd gzip
+
+  @api path /api/* /health/*
+  handle @api {
+    request_body {
+      max_size 5MB
+    }
+    reverse_proxy api:8000
+  }
+
+  handle {
+    reverse_proxy web:3000
+  }
+}

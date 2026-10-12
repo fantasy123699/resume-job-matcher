@@ -1,0 +1,14 @@
+{
+  "name": "resume-job-matcher",
+  "private": true,
+  "version": "0.1.0",
+  "packageManager": "pnpm@11.19.0",
+  "scripts": {
+    "dev:web": "pnpm --dir apps/web dev",
+    "build:web": "pnpm --dir apps/web build",
+    "lint:web": "pnpm --dir apps/web lint",
+    "typecheck:web": "pnpm --dir apps/web typecheck",
+    "test:web": "pnpm --dir apps/web test",
+    "check:web": "pnpm run lint:web && pnpm run typecheck:web && pnpm run test:web && pnpm run build:web"
+  }
+}

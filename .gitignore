@@ -1,0 +1,52 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+config/job_watch.local.json
+
+# Node
+node_modules/
+.pnpm-store/
+.next/
+coverage/
+*.tsbuildinfo
+
+# Python
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+
+# Local caches and scratch test directories (never commit; some are hundreds of MB)
+.cache/
+.pytest-temp*/
+.pytest-tmp*/
+pytest-of-*/
+
+# Crash/tooling logs
+debug.log
+
+# Generated data and uploads
+data/
+tmp/
+uploads/
+exports/
+*.sqlite3
+
+# IDE and operating system files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Downloaded Alibaba PuHuiTi (~19MB) - see output/fonts/README.md
+output/fonts/*.ttf
+
+# Job-application material. Kept in a sibling folder outside version control:
+# resumes, interview notes, targeting lists and the PDF/DOCX build output are
+# personal and do not belong in the project repository.
+求职材料/
+output/
